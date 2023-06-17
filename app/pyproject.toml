@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "algo-bank"
+version = "0.1.0"
+description = ""
+authors = ["Mickael Fioretti <fioretti.mickael@proton.me>"]
+readme = "README.md"
+packages = [{include = "algo_bank"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
