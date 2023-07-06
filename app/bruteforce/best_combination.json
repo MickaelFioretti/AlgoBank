@@ -1,0 +1,80 @@
+[
+    {
+        "action": "Action-2",
+        "cost": 30,
+        "benefit": 10
+    },
+    {
+        "action": "Action-3",
+        "cost": 50,
+        "benefit": 15
+    },
+    {
+        "action": "Action-4",
+        "cost": 70,
+        "benefit": 20
+    },
+    {
+        "action": "Action-6",
+        "cost": 80,
+        "benefit": 25
+    },
+    {
+        "action": "Action-7",
+        "cost": 22,
+        "benefit": 7
+    },
+    {
+        "action": "Action-8",
+        "cost": 26,
+        "benefit": 11
+    },
+    {
+        "action": "Action-9",
+        "cost": 48,
+        "benefit": 13
+    },
+    {
+        "action": "Action-10",
+        "cost": 34,
+        "benefit": 27
+    },
+    {
+        "action": "Action-11",
+        "cost": 42,
+        "benefit": 17
+    },
+    {
+        "action": "Action-13",
+        "cost": 38,
+        "benefit": 23
+    },
+    {
+        "action": "Action-14",
+        "cost": 14,
+        "benefit": 1
+    },
+    {
+        "action": "Action-16",
+        "cost": 8,
+        "benefit": 8
+    },
+    {
+        "action": "Action-17",
+        "cost": 4,
+        "benefit": 12
+    },
+    {
+        "action": "Action-18",
+        "cost": 10,
+        "benefit": 14
+    },
+    {
+        "action": "Action-19",
+        "cost": 24,
+        "benefit": 21
+    },
+    {
+        "total_benefit": 224
+    }
+]

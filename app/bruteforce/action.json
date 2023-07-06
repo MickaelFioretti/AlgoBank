@@ -1,0 +1,102 @@
+[
+    {
+        "actions": "Action-1",
+        "cout_par_action": 20,
+        "benefice": 5
+    },
+    {
+        "actions": "Action-2",
+        "cout_par_action": 30,
+        "benefice": 10
+    },
+    {
+        "actions": "Action-3",
+        "cout_par_action": 50,
+        "benefice": 15
+    },
+    {
+        "actions": "Action-4",
+        "cout_par_action": 70,
+        "benefice": 20
+    },
+    {
+        "actions": "Action-5",
+        "cout_par_action": 60,
+        "benefice": 17
+    },
+    {
+        "actions": "Action-6",
+        "cout_par_action": 80,
+        "benefice": 25
+    },
+    {
+        "actions": "Action-7",
+        "cout_par_action": 22,
+        "benefice": 7
+    },
+    {
+        "actions": "Action-8",
+        "cout_par_action": 26,
+        "benefice": 11
+    },
+    {
+        "actions": "Action-9",
+        "cout_par_action": 48,
+        "benefice": 13
+    },
+    {
+        "actions": "Action-10",
+        "cout_par_action": 34,
+        "benefice": 27
+    },
+    {
+        "actions": "Action-11",
+        "cout_par_action": 42,
+        "benefice": 17
+    },
+    {
+        "actions": "Action-12",
+        "cout_par_action": 110,
+        "benefice": 9
+    },
+    {
+        "actions": "Action-13",
+        "cout_par_action": 38,
+        "benefice": 23
+    },
+    {
+        "actions": "Action-14",
+        "cout_par_action": 14,
+        "benefice": 1
+    },
+    {
+        "actions": "Action-15",
+        "cout_par_action": 18,
+        "benefice": 3
+    },
+    {
+        "actions": "Action-16",
+        "cout_par_action": 8,
+        "benefice": 8
+    },
+    {
+        "actions": "Action-17",
+        "cout_par_action": 4,
+        "benefice": 12
+    },
+    {
+        "actions": "Action-18",
+        "cout_par_action": 10,
+        "benefice": 14
+    },
+    {
+        "actions": "Action-19",
+        "cout_par_action": 24,
+        "benefice": 21
+    },
+    {
+        "actions": "Action-20",
+        "cout_par_action": 114,
+        "benefice": 18
+    }
+]
