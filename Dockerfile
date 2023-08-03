@@ -48,7 +48,8 @@ WORKDIR ${HOME}
 RUN pip install --upgrade pip
 
 # Backend Python Packages
-RUN pip3 install poetry
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 
 # Set RUN using Bash instead of Sh (Mandatory for repo)
