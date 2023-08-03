@@ -25,8 +25,6 @@ def main():
 
     shares_list = read_csv(filename)
 
-    print(shares_list)
-
     print(
         f"\nProcessing '{sys.argv[1]}' ({len(shares_list)} valid shares) for {MAX_INVEST}€ :"
     )
