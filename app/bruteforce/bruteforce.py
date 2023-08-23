@@ -1,79 +1,113 @@
-import json
+from tqdm import tqdm
 
-# Read JSON file
-"""
-    {
-        "actions": "Action-1",
-        "cout_par_action": 20,
-        "benefice": 5
-    },
-"""
-with open("./action.json") as f:
-    actions: list = json.load(f)
-
-# variables
-valid_combinations: list = []
+from itertools import combinations
+import csv
+import time
+import sys
 
 
-# Function to generate combinations
-def generate_combinations(actions: list, r, combination=[]) -> None:
+start_time = time.time()
+
+# Check for custom cash investment (default = 500)
+try:
+    MAX_INVEST = float(sys.argv[1])
+except IndexError:
+    MAX_INVEST = 500
+
+
+def main():
+    shares_list = read_csv()
+
+    print(f"\nProcessing {len(shares_list)} shares for {MAX_INVEST}€ :")
+
+    best_combo = set_combos(shares_list)
+    display_results(best_combo)
+
+
+def read_csv():
+    """Import shares data from test_shares.csv
+
+    @return: shares data (list)
     """
-    Generate all combinations of actions
+    with open("action.csv") as csvfile:
+        shares_file = csv.reader(csvfile, delimiter=',')
+
+        shares_list = []
+        for row in shares_file:
+            shares_list.append(
+                (row[0], float(row[1]), float(row[2]))
+            )
+
+        return shares_list
+
+
+def set_combos(shares_list):
+    """Set all possible combinations of shares
+    Check if under max possible investment
+    Check and get highest profit
+
+    @param shares_list: list of all imported shares data
+    @return: most profitable combination (list)
     """
-    if r == 0:
-        total_cost: int = sum(
-            [action["cout_par_action"] for action in combination]
-        )
-        if total_cost == 500:
-            valid_combinations.append(combination)
-        return
+    profit = 0
+    best_combo = []
 
-    for i in range(len(actions)):
-        new_combination = combination + [actions[i]]
-        generate_combinations(actions[i + 1 :], r - 1, new_combination)
+    for i in tqdm(range(len(shares_list))):
+        combos = combinations(shares_list, i+1)
 
+        for combo in combos:
+            total_cost = calc_cost(combo)
 
-# Script
-for r in range(1, len(actions) + 1):
-    generate_combinations(actions, r)
+            if total_cost <= MAX_INVEST:
+                total_profit = calc_profit(combo)
 
+                if total_profit > profit:
+                    profit = total_profit
+                    best_combo = combo
 
-"""
-    Ajoute les combinaisons valides dans un fichier JSON
-"""
-# Creer une structure de donnees
-results = {"combinations": []}
-
-# Ajoute les combinaisons valides au resultat
-for combination in valid_combinations:
-    combination_data = [
-        {
-            "action": action["actions"],
-            "cost": action["cout_par_action"],
-            "benefit": action["benefice"],
-        }
-        for action in combination
-    ]
-
-    # benefice total
-    total_benefit: int = sum([action["benefice"] for action in combination])
-    combination_data.append({"total_benefit": total_benefit})
-
-    results["combinations"].append(combination_data)
-
-# Recupere la combinaison avec le benefice le plus eleve
-best_combination = max(
-    results["combinations"],
-    key=lambda combination: combination[-1]["total_benefit"],
-)
-
-# Ajoute la combinaison avec le benefice le plus eleve dans un fichier JSON
-with open("./best_combination.json", "w") as f:
-    json.dump(best_combination, f, indent=4)
-
-# Ecrit le resultat dans un fichier JSON
-with open("./result.json", "w") as f:
-    json.dump(results, f, indent=4)
+    return best_combo
 
 
-print("Fin du script !")
+def calc_cost(combo):
+    """Sum of current share combo prices
+
+    @param combo: list of current shares combo
+    @return: total cost (float)
+    """
+    prices = []
+    for el in combo:
+        prices.append(el[1])
+
+    return sum(prices)
+
+
+def calc_profit(combo):
+    """Sum of current share combo profit
+
+    @param combo: list of current shares combo
+    @return: total profit (float)
+    """
+    profits = []
+    for el in combo:
+        profits.append(el[1] * el[2] / 100)
+
+    return sum(profits)
+
+
+def display_results(best_combo):
+    """Display best combination results
+
+    @param best_combo: most profitable shares combination (list)
+    """
+    print(f"\nMost profitable investment ({len(best_combo)} shares) :\n")
+
+    for item in best_combo:
+        print(f"{item[0]} | {item[1]} € | +{item[2]} %")
+
+    print("\nTotal cost : ", calc_cost(best_combo), "€")
+    print("Profit after 2 years : +", calc_profit(best_combo), "€")
+    print("\nTime elapsed : ", time.time() - start_time, "seconds")
+
+
+if __name__ == "__main__":
+    main()
